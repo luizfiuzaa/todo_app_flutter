@@ -6,10 +6,10 @@ import 'package:todo_app/app_widget.dart';
 
 void main() {
   runApp(
-     RxRoot(
+    RxRoot(
       child: ModularApp(
         module: AppModule(),
-        child: AppWidget()
+        child: const AppWidget(),
       ),
     ),
   );

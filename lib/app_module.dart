@@ -1,5 +1,6 @@
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:todo_app/pages/home_page.dart';
+import 'package:todo_app/pages/settings_page.dart';
 
 class AppModule extends Module {
   @override
@@ -10,6 +11,10 @@ class AppModule extends Module {
         ChildRoute(
           '/',
           child: (context, args) => const HomePage(),
+        ),
+        ChildRoute(
+          '/settings/',
+          child: (context, args) => const SettingsPage(),
         ),
       ];
 }
