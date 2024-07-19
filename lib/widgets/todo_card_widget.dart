@@ -1,8 +1,10 @@
 import 'package:asp/asp.dart';
 import 'package:flutter/material.dart';
+import 'package:todo_app/items/todo_item.dart';
 
 class ToDoCardWidget extends StatelessWidget {
-  const ToDoCardWidget({super.key});
+  const ToDoCardWidget({super.key, required this.todoTitle});
+  final String todoTitle;
 
   @override
   Widget build(BuildContext context) {
@@ -17,11 +19,29 @@ class ToDoCardWidget extends StatelessWidget {
               children: [
                 ListTile(
                   leading: CheckBoxWidget(),
-                  title: const Text(
-                    "TESTE",
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                  title: Text(
+                    todoTitle,
+                    style: const TextStyle(
+                        fontWeight: FontWeight.bold, fontSize: 20),
                   ),
-                  subtitle: const Text("Teste teste"),
+                  subtitle: Row(
+                    children: [
+                      IconButton(
+                        color: Colors.red,
+                        onPressed: () {
+                          null;
+                        },
+                        icon: const Icon(Icons.delete),
+                      ),
+                      IconButton(
+                        color: Theme.of(context).colorScheme.primary,
+                        onPressed: () {
+                          null;
+                        },
+                        icon: const Icon(Icons.edit),
+                      ),
+                    ],
+                  ),
                 ),
               ],
             ),

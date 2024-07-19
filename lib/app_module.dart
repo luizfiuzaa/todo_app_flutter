@@ -10,7 +10,7 @@ class AppModule extends Module {
   List<ModularRoute> get routes => [
         ChildRoute(
           '/',
-          child: (context, args) => const HomePage(),
+          child: (context, args) => HomePage(),
         ),
         ChildRoute(
           '/settings/',
