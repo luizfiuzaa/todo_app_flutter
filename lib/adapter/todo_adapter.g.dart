@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'todo_item.dart';
+part of 'todo_adapter.dart';
 
 // **************************************************************************
 // TypeAdapterGenerator
@@ -18,20 +18,17 @@ class TodoItemAdapter extends TypeAdapter<TodoItem> {
     };
     return TodoItem(
       title: fields[0] as String,
-      description: fields[1] as String,
-      isCompleted: fields[2] == null ? false : fields[2] as bool,
+      isCompleted: fields[1] == null ? false : fields[1] as bool,
     );
   }
 
   @override
   void write(BinaryWriter writer, TodoItem obj) {
     writer
-      ..writeByte(3)
+      ..writeByte(2)
       ..writeByte(0)
       ..write(obj.title)
       ..writeByte(1)
-      ..write(obj.description)
-      ..writeByte(2)
       ..write(obj.isCompleted);
   }
 

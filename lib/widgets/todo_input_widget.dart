@@ -7,7 +7,7 @@ class TodoInputWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(7.0),
-      child: Row(
+      child: Column(
         children: [
           TextField(
             decoration: InputDecoration(

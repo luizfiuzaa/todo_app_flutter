@@ -1,6 +1,6 @@
 import 'package:asp/asp.dart';
 import 'package:flutter/material.dart';
-import 'package:todo_app/items/todo_item.dart';
+import 'package:todo_app/adapter/todo_adapter.dart';
 
 class ToDoCardWidget extends StatelessWidget {
   const ToDoCardWidget({super.key, required this.todoTitle});
