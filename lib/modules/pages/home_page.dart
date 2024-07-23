@@ -1,18 +1,15 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:todo_app/adapter/todo_adapter.dart';
-import 'package:todo_app/interactor/atoms/todo_atom.dart';
+import 'package:todo_app/modules/interactor/atoms/todo_atom.dart';
 import 'package:todo_app/widgets/drawer_widget.dart';
+import 'package:todo_app/widgets/list_todo_widget.dart';
 import 'package:todo_app/widgets/save_button_widget.dart';
 import 'package:todo_app/widgets/text_field_widget.dart';
-import 'package:todo_app/widgets/todo_card_widget.dart';
 
 class HomePage extends StatelessWidget {
   HomePage({super.key});
 
-  final TodoAtom todoAtom = Modular.get<TodoAtom>();
+  final todoAtom = Modular.get<TodoAtom>();
   final TextEditingController _textEditingController = TextEditingController();
 
   @override
@@ -20,23 +17,25 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       appBar: AppBar(
-        title: const Text("To do"),
+        title: const Text("To Do"),
         backgroundColor: Theme.of(context).colorScheme.primary,
       ),
       drawer: const DrawerWidget(),
       body: Column(
         children: [
-          ToDoCardWidget(
-            todoTitle: "Teste",
-          ),
+          SizedBox(
+              height: MediaQuery.of(context).size.height,
+              child: const ListTodoWidget()),
           TextFieldWidget(
-            hintText: "Type something",
+            hintText: "Type something...",
             controller: _textEditingController,
             onChanged: (v) {
-              // todoAtom.
+              todoAtom.saveTodoAction;
             },
           ),
-          SaveButtonWidget()
+          SaveButtonWidget(
+            onPressed: () {},
+          ),
         ],
       ),
     );

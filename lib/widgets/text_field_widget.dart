@@ -8,21 +8,18 @@ class TextFieldWidget extends StatelessWidget {
   final void Function(String) onChanged;
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(11),
-      child: TextField(
-        onChanged: onChanged,
-        controller: controller,
-        decoration: InputDecoration(
-          enabledBorder: OutlineInputBorder(
-            borderSide:
-                BorderSide(color: Theme.of(context).colorScheme.primary),
-          ),
-          fillColor: Theme.of(context).colorScheme.inversePrimary,
-          filled: true,
-          hintText: hintText,
-          hintStyle: TextStyle(color: Theme.of(context).colorScheme.tertiary),
+    return TextField(
+      onChanged: onChanged,
+      controller: controller,
+      decoration: InputDecoration(
+        enabledBorder: OutlineInputBorder(
+          borderSide:
+              BorderSide(color: Theme.of(context).colorScheme.primary),
         ),
+        fillColor: Theme.of(context).colorScheme.inversePrimary,
+        filled: true,
+        hintText: hintText,
+        hintStyle: TextStyle(color: Theme.of(context).colorScheme.tertiary),
       ),
     );
   }

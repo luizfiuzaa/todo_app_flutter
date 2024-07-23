@@ -1,52 +1,37 @@
 import 'package:asp/asp.dart';
 import 'package:flutter/material.dart';
-import 'package:todo_app/adapter/todo_adapter.dart';
+import 'package:flutter_modular/flutter_modular.dart';
+import 'package:todo_app/modules/boxes/todo_box.dart';
+import 'package:todo_app/modules/interactor/atoms/todo_atom.dart';
 
 class ToDoCardWidget extends StatelessWidget {
-  const ToDoCardWidget({super.key, required this.todoTitle});
+  ToDoCardWidget({super.key, required this.todoTitle, required this.onPressed});
   final String todoTitle;
+  final void Function()? onPressed;
+
+  final todoAtom = Modular.get<TodoAtom>();
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.all(7),
-      child: Padding(
-        padding: const EdgeInsets.all(1),
-        child: Center(
-          child: Card(
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                ListTile(
-                  leading: CheckBoxWidget(),
-                  title: Text(
-                    todoTitle,
-                    style: const TextStyle(
-                        fontWeight: FontWeight.bold, fontSize: 20),
-                  ),
-                  subtitle: Row(
-                    children: [
-                      IconButton(
-                        color: Colors.red,
-                        onPressed: () {
-                          null;
-                        },
-                        icon: const Icon(Icons.delete),
-                      ),
-                      IconButton(
-                        color: Theme.of(context).colorScheme.primary,
-                        onPressed: () {
-                          null;
-                        },
-                        icon: const Icon(Icons.edit),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
+    return ListTile(
+      leading: CheckBoxWidget(),
+      title: Text(
+        todoTitle,
+        style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+      ),
+      subtitle: Row(
+        children: [
+          IconButton(
+            color: Colors.red,
+            onPressed: onPressed,
+            icon: const Icon(Icons.delete),
           ),
-        ),
+          IconButton(
+            color: Theme.of(context).colorScheme.primary,
+            onPressed: onPressed,
+            icon: const Icon(Icons.edit),
+          ),
+        ],
       ),
     );
   }

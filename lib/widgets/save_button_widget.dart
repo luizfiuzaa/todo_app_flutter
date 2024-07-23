@@ -1,22 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:todo_app/interactor/atoms/todo_atom.dart';
+import 'package:todo_app/modules/interactor/atoms/todo_atom.dart';
 
-class SaveButtonWidget extends StatefulWidget {
+class SaveButtonWidget extends StatelessWidget {
+  const SaveButtonWidget({super.key, required this.onPressed});
 
-  final todoAtom = Modular.get<TodoAtom>();
-
-   SaveButtonWidget({super.key});
-
-  @override
-  State<SaveButtonWidget> createState() => _SaveButtonWidgetState();
-}
-
-class _SaveButtonWidgetState extends State<SaveButtonWidget> {
+  final void Function()? onPressed;
   @override
   Widget build(BuildContext context) {
-    return Padding(padding: const EdgeInsets.all(13), child: ElevatedButton(onPressed: () {
-     widget.todoAtom.saveTodoAction();
-    }, child: const Icon(Icons.add)),);
+    return ElevatedButton(
+        onPressed: onPressed,
+        child: const Icon(Icons.add));
   }
 }
