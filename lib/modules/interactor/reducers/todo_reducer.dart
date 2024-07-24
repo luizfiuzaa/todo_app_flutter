@@ -8,9 +8,30 @@ class TodoReducer extends Reducer {
   final TodoAtom todoAtom = Modular.get<TodoAtom>();
 
   TodoReducer() {
-    on(() => [todoAtom.saveTodoAction], () {
-      todoBox
-          .add(TodoItem(title: todoAtom.todoTitle.value, isCompleted: false,));
+    on(() => [todoAtom.saveTodoAction], () async {
+      await todoBox.add(
+        
+        TodoItem(
+          title: todoAtom.todoTitle.value,
+          isCompleted: false,
+        ),
+      );
+      todoAtom.todoListAll.setValue(todoBox.values.toList());
+    });
+
+    on(() => [todoAtom.todoListAll], () {
+      todoAtom.todoListAll.setValue(todoBox.values.toList());
+    });
+    on(() => [todoAtom.deleteAllTodoAction], () async {
+      if (todoBox.values.isNotEmpty) {
+        await todoBox.clear();
+        todoAtom.todoListAll.setValue(todoBox.values.toList());
+      }
+      todoAtom.todoListAll.setValue(todoBox.values.toList());
+    });
+    on(() => [todoAtom.deleteTodoAction], () async {
+      await todoBox.deleteAt(todoAtom.deleteTodoAction.value);
+      todoAtom.todoListAll.setValue(todoBox.values.toList());
     });
 
     void dispose() {}

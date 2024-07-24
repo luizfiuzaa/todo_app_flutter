@@ -8,9 +8,8 @@ import 'package:todo_app/widgets/text_field_widget.dart';
 
 class HomePage extends StatelessWidget {
   HomePage({super.key});
-
   final todoAtom = Modular.get<TodoAtom>();
-  final TextEditingController _textEditingController = TextEditingController();
+  final TextEditingController controller = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -23,19 +22,18 @@ class HomePage extends StatelessWidget {
       drawer: const DrawerWidget(),
       body: Column(
         children: [
-          SizedBox(
-              height: MediaQuery.of(context).size.height,
-              child: const ListTodoWidget()),
+          const Expanded(child: ListTodoWidget()),
           TextFieldWidget(
             hintText: "Type something...",
-            controller: _textEditingController,
+            controller: controller,
             onChanged: (v) {
               todoAtom.saveTodoAction;
             },
           ),
-          SaveButtonWidget(
-            onPressed: () {},
-          ),
+          SaveButtonWidget(onPressed: () {
+            todoAtom.todoTitle.setValue(controller.text);
+            todoAtom.saveTodoAction();
+          }),
         ],
       ),
     );

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
+import 'package:todo_app/modules/interactor/atoms/todo_atom.dart';
 import 'package:todo_app/widgets/listile_widget.dart';
 
 class DrawerWidget extends StatelessWidget {
@@ -6,6 +8,7 @@ class DrawerWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final todoAtom = Modular.get<TodoAtom>();
     return Drawer(
       child: Column(
         children: [
@@ -38,15 +41,17 @@ class DrawerWidget extends StatelessWidget {
               borderRadius: BorderRadius.circular(15),
             ),
             margin: const EdgeInsets.all(5),
-            child: const Padding(
-              padding: EdgeInsets.all(7.0),
+            child: Padding(
+              padding: const EdgeInsets.all(7.0),
               child: ListTile(
                 tileColor: Colors.red,
                 textColor: Colors.white70,
                 iconColor: Colors.white70,
-                title: Text("CLEAR DATA"),
-                leading: Icon(Icons.delete),
-                // onTap: () => delete all todo's,
+                title: const Text("CLEAR DATA"),
+                leading: const Icon(Icons.delete),
+                onTap: () {
+                  todoAtom.deleteAllTodoAction();
+                },
               ),
             ),
           ),
