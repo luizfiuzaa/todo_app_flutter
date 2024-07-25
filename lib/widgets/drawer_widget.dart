@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:todo_app/modules/boxes/todo_box.dart';
 import 'package:todo_app/modules/interactor/atoms/todo_atom.dart';
 import 'package:todo_app/widgets/listile_widget.dart';
 

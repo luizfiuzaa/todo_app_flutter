@@ -20,7 +20,7 @@ class TodoReducer extends Reducer {
     });
 
     on(() => [todoAtom.todoListAll], () async {
-      // todoAtom.todoListAll.setValue(todoBox.values.toList());
+      todoAtom.todoListAll.setValueWithoutReaction(todoBox.values.toList());
     });
 
     on(() => [todoAtom.deleteAllTodoAction], () async {
