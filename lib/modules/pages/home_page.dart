@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:todo_app/modules/boxes/todo_box.dart';
 import 'package:todo_app/modules/interactor/atoms/todo_atom.dart';
 import 'package:todo_app/widgets/drawer_widget.dart';
 import 'package:todo_app/widgets/list_todo_widget.dart';
@@ -33,6 +34,8 @@ class HomePage extends StatelessWidget {
           SaveButtonWidget(onPressed: () {
             todoAtom.todoTitle.setValue(controller.text);
             todoAtom.saveTodoAction();
+            todoAtom.todoListAll.setValue(todoBox.values.toList());
+            controller.clear();
           }),
         ],
       ),

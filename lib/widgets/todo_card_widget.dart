@@ -1,6 +1,7 @@
 import 'package:asp/asp.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:todo_app/modules/boxes/todo_box.dart';
 import 'package:todo_app/modules/interactor/atoms/todo_atom.dart';
 
 final todoAtom = Modular.get<TodoAtom>();
@@ -32,7 +33,13 @@ class ToDoCardWidget extends StatelessWidget {
                   icon: const Icon(Icons.delete),
                   onPressed: () {
                     todoAtom.deleteTodoAction.setValue(index);
+                    todoAtom.todoListAll.setValue(todoBox.values.toList());
                   },
+                ),
+                IconButton(
+                  color: Colors.lightBlue,
+                  icon: const Icon(Icons.auto_awesome_rounded),
+                  onPressed: () {},
                 ),
               ],
             ),

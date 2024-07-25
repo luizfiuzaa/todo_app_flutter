@@ -9,29 +9,28 @@ class TodoReducer extends Reducer {
 
   TodoReducer() {
     on(() => [todoAtom.saveTodoAction], () async {
-      await todoBox.add(
-        
-        TodoItem(
-          title: todoAtom.todoTitle.value,
-          isCompleted: false,
-        ),
-      );
-      todoAtom.todoListAll.setValue(todoBox.values.toList());
+      if (todoAtom.todoTitle.value.isNotEmpty) {
+        await todoBox.add(
+          TodoItem(
+            title: todoAtom.todoTitle.value,
+            isCompleted: false,
+          ),
+        );
+      }
     });
 
-    on(() => [todoAtom.todoListAll], () {
-      todoAtom.todoListAll.setValue(todoBox.values.toList());
+    on(() => [todoAtom.todoListAll], () async {
+      // todoAtom.todoListAll.setValue(todoBox.values.toList());
     });
+
     on(() => [todoAtom.deleteAllTodoAction], () async {
       if (todoBox.values.isNotEmpty) {
         await todoBox.clear();
         todoAtom.todoListAll.setValue(todoBox.values.toList());
       }
-      todoAtom.todoListAll.setValue(todoBox.values.toList());
     });
     on(() => [todoAtom.deleteTodoAction], () async {
       await todoBox.deleteAt(todoAtom.deleteTodoAction.value);
-      todoAtom.todoListAll.setValue(todoBox.values.toList());
     });
 
     void dispose() {}
