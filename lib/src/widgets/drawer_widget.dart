@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:todo_app/modules/interactor/atoms/todo_atom.dart';
+import 'package:todo_app/src/modules/interactor/atoms/todo_atom.dart';
 import 'package:todo_app/src/widgets/listile_widget.dart';
 
 class DrawerWidget extends StatelessWidget {
@@ -17,7 +17,7 @@ class DrawerWidget extends StatelessWidget {
               DrawerHeader(
                 child: Center(
                   child: Icon(
-                    Icons.android_rounded,
+                    Icons.view_list,
                     size: 50,
                   ),
                 ),
@@ -33,6 +33,11 @@ class DrawerWidget extends StatelessWidget {
             leading: Icon(Icons.settings),
             title: 'SETTINGS',
             route: '/settings/',
+          ),
+          const ListileWidget(
+            leading: Icon(Icons.android),
+            title: 'AI HELPER',
+            route: '/ai_helper/',
           ),
           const Spacer(),
           Container(

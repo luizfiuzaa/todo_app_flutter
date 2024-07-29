@@ -1,23 +1,20 @@
-// ignore_for_file: prefer_const_constructors, avoid_unnecessary_containers
-
 import 'package:flutter/material.dart';
 import 'package:todo_app/src/widgets/drawer_widget.dart';
 
-class SettingsPage extends StatelessWidget {
-  const SettingsPage({super.key});
-
+class AppBarWidget extends StatelessWidget {
+  const AppBarWidget({super.key, required this.title, required this.body});
+  final String title;
+  final Widget body;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       appBar: AppBar(
-        title: const Text("To do"),
+        title: Text(title),
         backgroundColor: Theme.of(context).colorScheme.primary,
       ),
-      drawer: DrawerWidget(),
-      body: Container(
-        child: Text("Freeman"),
-      ),
+      drawer: const DrawerWidget(),
+      body: body,
     );
   }
 }

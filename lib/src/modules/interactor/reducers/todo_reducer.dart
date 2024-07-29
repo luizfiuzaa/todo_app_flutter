@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:asp/asp.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:todo_app/src/modules/adapter/todo_adapter.dart';
@@ -23,14 +25,20 @@ class TodoReducer extends Reducer {
       todoAtom.todoListAll.setValueWithoutReaction(todoBox.values.toList());
     });
 
+    on(() => [todoAtom.helpAiTodoAction], () async {
+      final todo = todoAtom.todoListAll.value[todoAtom.helpAiTodoAction.value];
+      log(todo.title);
+      todo.title;
+    });
+
+    on(() => [todoAtom.deleteTodoAction], () async {
+      await todoBox.deleteAt(todoAtom.deleteTodoAction.value);
+    });
     on(() => [todoAtom.deleteAllTodoAction], () async {
       if (todoBox.values.isNotEmpty) {
         await todoBox.clear();
         todoAtom.todoListAll.setValue(todoBox.values.toList());
       }
-    });
-    on(() => [todoAtom.deleteTodoAction], () async {
-      await todoBox.deleteAt(todoAtom.deleteTodoAction.value);
     });
 
     void dispose() {}
