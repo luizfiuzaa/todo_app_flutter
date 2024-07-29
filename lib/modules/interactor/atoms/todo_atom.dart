@@ -5,8 +5,8 @@ class TodoAtom /*implements Disposable*/ {
   final showTodoAction = Atom.action();
   
   final saveTodoAction = Atom.action();
-
   final helpAiTodoAction = Atom<int>(-1);
+
 
   final deleteTodoAction = Atom<int>(-1);
   final deleteAllTodoAction = Atom.action();
