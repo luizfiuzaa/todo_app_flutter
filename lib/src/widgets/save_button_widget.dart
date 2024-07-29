@@ -7,15 +7,8 @@ class SaveButtonWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: Theme.of(context).colorScheme.primary,
-        shape: BoxShape.circle,
-      ),
-      child: IconButton(
-        icon: const Icon(Icons.add),
+    return ElevatedButton(
         onPressed: onPressed,
-      ),
-    );
+        child: const Icon(Icons.add));
   }
-}
+  }

@@ -2,7 +2,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:todo_app/modules/interactor/atoms/todo_atom.dart';
 import 'package:todo_app/modules/interactor/reducers/todo_reducer.dart';
 import 'package:todo_app/modules/pages/home_page.dart';
-import 'package:todo_app/pages/settings_page.dart';
+import 'package:todo_app/src/pages/settings_page.dart';
 
 class AppModule extends Module {
   @override

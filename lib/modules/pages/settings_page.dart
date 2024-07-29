@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_const_constructors, avoid_unnecessary_containers
 
 import 'package:flutter/material.dart';
-import 'package:todo_app/widgets/drawer_widget.dart';
+import 'package:todo_app/src/widgets/drawer_widget.dart';
 
 class SettingsPage extends StatelessWidget {
   const SettingsPage({super.key});
