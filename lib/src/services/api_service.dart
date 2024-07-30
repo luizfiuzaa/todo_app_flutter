@@ -7,9 +7,8 @@ class ApiService {
   final Dio _dio = Dio();
 
   ApiService() {
-    _dio.options.baseUrl =
-        'https://api.openai.com/v1/engines/davinci-codex/completations';
-    _dio.options.headers['Authorizarization'] =
+    _dio.options.baseUrl = 'https://api.openai.com/v1/engines/davinci/completions';
+    _dio.options.headers['Authorization'] =
         'Bearer ${dotenv.env['OPENAI_API_KEY']}';
     _dio.options.headers['Content-Type'] = 'application/json';
   }
@@ -19,11 +18,11 @@ class ApiService {
       final response = await _dio.post(
         '',
         data: {
-          'prompt': prompt,
-          'max_tokens': 100,
+          "prompt": prompt,
+          "max_tokens": 100,
         },
       );
-      return response.data['choices'][0]['text'];
+      return response.data['choices'][0]['text'].trim();
     } on DioException catch (dioException) {
       log('Error: $dioException');
       return 'Error to get response';

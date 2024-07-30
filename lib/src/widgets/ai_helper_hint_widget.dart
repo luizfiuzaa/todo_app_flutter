@@ -1,5 +1,4 @@
-// ignore_for_file: prefer_const_constructors
-
+import 'package:asp/asp.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:todo_app/src/modules/interactor/atoms/ai_atom.dart';
@@ -15,16 +14,16 @@ class AiHelperHintWidget extends StatefulWidget {
 class _AiHelperHintWidgetState extends State<AiHelperHintWidget> {
   final aiAtom = Modular.get<AiAtom>();
   final todoAtom = Modular.get<TodoAtom>();
-  late final _response;
 
   @override
   void initState() {
-    _response.setValue(aiAtom.getTodo());
+    super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    _response.setValue();
+    final aiResponse = context.select(() => todoAtom.aiResult.value);
+
     return Column(
       children: [
         Card(
@@ -33,31 +32,23 @@ class _AiHelperHintWidgetState extends State<AiHelperHintWidget> {
               Row(
                 children: [
                   Container(
-                    margin: EdgeInsets.all(7.0),
+                    margin: const EdgeInsets.all(7.0),
                     child: CircleAvatar(
                       backgroundColor: Theme.of(context).colorScheme.primary,
-                      child: Icon(Icons.android),
+                      child: const Icon(Icons.android),
                     ),
                   ),
-                  Text(
-                    "AI HELPER: ",
+                  const Text(
+                    "AI HELPER:",
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ),
                 ],
               ),
               Container(
-                margin: EdgeInsets.symmetric(vertical: 11, horizontal: 3),
+                margin: const EdgeInsets.symmetric(vertical: 11, horizontal: 3),
                 child: Row(
                   children: [
-                    Text(_response),
-                  ],
-                ),
-              ),
-              Container(
-                margin: EdgeInsets.symmetric(vertical: 11, horizontal: 3),
-                child: Row(
-                  children: [
-                    Text(_response),
+                    Text(aiResponse ?? 'Loading'),
                   ],
                 ),
               ),

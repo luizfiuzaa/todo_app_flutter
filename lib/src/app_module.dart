@@ -1,7 +1,6 @@
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:todo_app/src/modules/interactor/atoms/ai_atom.dart';
 import 'package:todo_app/src/modules/interactor/atoms/todo_atom.dart';
-import 'package:todo_app/src/modules/interactor/reducers/ai_reducer.dart';
 import 'package:todo_app/src/modules/interactor/reducers/todo_reducer.dart';
 import 'package:todo_app/src/modules/pages/ai_helper_page.dart';
 import 'package:todo_app/src/modules/pages/home_page.dart';
@@ -21,10 +20,6 @@ class AppModule extends Module {
         Bind.singleton<AiAtom>(
           (i) => AiAtom(),
           onDispose: (atoms) => atoms.dispose(),
-        ),
-        Bind.singleton<AiReducer>(
-          (i) => AiReducer(),
-          onDispose: (reducer) => reducer.dispose(),
         ),
       ];
 
