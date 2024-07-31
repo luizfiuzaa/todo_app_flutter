@@ -10,7 +10,6 @@ class TodoInputWidget extends StatelessWidget {
       child: Column(
         children: [
           TextField(
-            key: const Key('todoTitleInput'),
             decoration: InputDecoration(
               enabledBorder: OutlineInputBorder(
                 borderSide:

@@ -26,6 +26,7 @@ class _ListTodoWidgetState extends State<ListTodoWidget> {
     return SizedBox(
       height: MediaQuery.of(context).size.height,
       child: ListView.builder(
+        key: const Key('todoTitleCard'),
         itemCount: todoList.length,
         itemBuilder: (context, index) {
           TodoItem todoItem = todoList[index];

@@ -10,6 +10,7 @@ class DrawerWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final todoAtom = Modular.get<TodoAtom>();
     return Drawer(
+      key: const Key('drawer'),
       child: Column(
         children: [
           const Column(
@@ -44,7 +45,7 @@ class DrawerWidget extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.all(7.0),
               child: ListTile(
-                tileColor: Colors.red,
+                key: const Key('deleteAllTodo'),
                 textColor: Colors.white70,
                 iconColor: Colors.white70,
                 title: const Text("CLEAR DATA"),

@@ -9,14 +9,15 @@ class TodoReducer extends Reducer {
 
   TodoReducer() {
     on(() => [todoAtom.saveTodoAction], () async {
-      if (todoAtom.todoTitle.value.isNotEmpty) {
-        await todoBox.add(
-          TodoItem(
-            title: todoAtom.todoTitle.value,
-            isCompleted: false,
-          ),
-        );
+      if (todoAtom.todoTitle.value.isEmpty) {
+        todoAtom.todoTitle.value = "Make a ToDo Task";
       }
+      await todoBox.add(
+        TodoItem(
+          title: todoAtom.todoTitle.value,
+          isCompleted: false,
+        ),
+      );
     });
 
     on(() => [todoAtom.todoListAll], () async {
@@ -28,6 +29,7 @@ class TodoReducer extends Reducer {
         await todoBox.clear();
         todoAtom.todoListAll.setValue(todoBox.values.toList());
       }
+        Modular.to.pop();
     });
     on(() => [todoAtom.deleteTodoAction], () async {
       await todoBox.deleteAt(todoAtom.deleteTodoAction.value);

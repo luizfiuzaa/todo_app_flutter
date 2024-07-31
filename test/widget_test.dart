@@ -7,24 +7,30 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:todo_app/app_widget.dart';
 import 'package:todo_app/src/pages/home_page.dart';
+import 'package:todo_app/src/widgets/todo_card_widget.dart';
+
 
 
 void main() {
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {
     // Build our app and trigger a frame.
-    await tester.pumpWidget(HomePage());
+    await tester.pumpWidget(const AppWidget());
 
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
+    expect(find.byWidget(HomePage(key: const Key('value'),)), findsOneWidget);
+    expect(find.byType(ToDoCardWidget), findsNothing);
+    expect(
+        find.byWidget(const ToDoCardWidget(todoTitle: 'Make a ToDo Task', index: 0)),
+        findsNothing);
 
     // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
+    await tester.tap(find.byKey(const Key('todoSaveBtn')));
     await tester.pump();
 
+    expect(
+        find.byWidget(const ToDoCardWidget(todoTitle: 'Make a ToDo Task', index: 0)),
+        findsOneWidget);
     // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
   });
 }

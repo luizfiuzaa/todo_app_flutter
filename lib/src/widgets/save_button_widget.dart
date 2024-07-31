@@ -8,6 +8,7 @@ class SaveButtonWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
+      key: const Key('todoSaveBtn'),
         onPressed: onPressed,
         child: const Icon(Icons.add));
   }

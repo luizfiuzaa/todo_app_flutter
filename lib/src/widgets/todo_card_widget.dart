@@ -17,31 +17,23 @@ class ToDoCardWidget extends StatelessWidget {
     return Column(
       children: [
         Card(
+          key: const Key('todoCard'),
           child: ListTile(
-            leading: CheckBoxWidget(),
+            leading: IconButton(
+              key: const Key('deleteTodo'),
+              color: Colors.green,
+              icon: const Icon(Icons.check_rounded),
+              onPressed: () {
+                todoAtom.deleteTodoAction.setValue(index);
+                todoAtom.todoListAll.setValue(todoBox.values.toList());
+              },
+            ),
             title: Text(
               todoTitle,
               style: const TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 20,
               ),
-            ),
-            subtitle: Row(
-              children: [
-                IconButton(
-                  color: Colors.red,
-                  icon: const Icon(Icons.delete),
-                  onPressed: () {
-                    todoAtom.deleteTodoAction.setValue(index);
-                    todoAtom.todoListAll.setValue(todoBox.values.toList());
-                  },
-                ),
-                IconButton(
-                  color: Colors.lightBlue,
-                  icon: const Icon(Icons.auto_awesome_rounded),
-                  onPressed: () {},
-                ),
-              ],
             ),
           ),
         ),

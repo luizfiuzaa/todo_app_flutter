@@ -23,10 +23,12 @@ class ListileWidget extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(7.0),
         child: ListTile(
-          leading: leading,
-          title: Text(title),
-          onTap: () => Modular.to.navigate(route),
-        ),
+            leading: leading,
+            title: Text(title),
+            onTap: () {
+              Modular.to.navigate(route);
+              Modular.to.pop();
+            }),
       ),
     );
   }
