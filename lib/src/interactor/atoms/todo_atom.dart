@@ -1,5 +1,5 @@
 import 'package:asp/asp.dart';
-import 'package:todo_app/modules/adapter/todo_adapter.dart';
+import 'package:todo_app/src/modules/adapter/todo_adapter.dart';
 
 class TodoAtom /*implements Disposable*/ {
   final showTodoAction = Atom.action();

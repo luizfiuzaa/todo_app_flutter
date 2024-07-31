@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:todo_app/modules/boxes/todo_box.dart';
-import 'package:todo_app/modules/interactor/atoms/todo_atom.dart';
-import 'package:todo_app/widgets/drawer_widget.dart';
-import 'package:todo_app/widgets/list_todo_widget.dart';
-import 'package:todo_app/widgets/save_button_widget.dart';
-import 'package:todo_app/widgets/text_field_widget.dart';
+import 'package:todo_app/src/modules/boxes/todo_box.dart';
+import 'package:todo_app/src/interactor/atoms/todo_atom.dart';
+import 'package:todo_app/src/widgets/drawer_widget.dart';
+import 'package:todo_app/src/widgets/list_todo_widget.dart';
+import 'package:todo_app/src/widgets/save_button_widget.dart';
+import 'package:todo_app/src/widgets/text_field_widget.dart';
 
 class HomePage extends StatelessWidget {
   HomePage({super.key});
