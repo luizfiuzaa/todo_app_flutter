@@ -4,13 +4,14 @@ import 'package:todo_app/src/interactor/atoms/todo_atom.dart';
 import 'package:todo_app/src/widgets/listile_widget.dart';
 
 class DrawerWidget extends StatelessWidget {
-  const DrawerWidget({super.key});
+ final Key? drawerKey;
+  const DrawerWidget({super.key, this.drawerKey});
 
   @override
   Widget build(BuildContext context) {
     final todoAtom = Modular.get<TodoAtom>();
     return Drawer(
-      key: const Key('drawer'),
+      key: drawerKey,
       child: Column(
         children: [
           const Column(

@@ -18,10 +18,11 @@ class HomePage extends StatelessWidget {
       key: const Key('homePage'),
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       appBar: AppBar(
+        key: const Key('appBar'),
         title: const Text("To Do"),
         backgroundColor: Theme.of(context).colorScheme.primary,
       ),
-      drawer: const DrawerWidget(),
+      drawer: const DrawerWidget(key: Key('drawerBtn'),),
       body: Column(
         children: [
           const Expanded(child: ListTodoWidget()),

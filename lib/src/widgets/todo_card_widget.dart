@@ -21,8 +21,8 @@ class ToDoCardWidget extends StatelessWidget {
           child: ListTile(
             leading: IconButton(
               key: const Key('deleteTodo'),
-              color: Colors.green,
-              icon: const Icon(Icons.check_rounded),
+              color: Colors.red.shade600,
+              icon: const Icon(Icons.delete),
               onPressed: () {
                 todoAtom.deleteTodoAction.setValue(index);
                 todoAtom.todoListAll.setValue(todoBox.values.toList());
