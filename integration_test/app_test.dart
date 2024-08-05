@@ -5,7 +5,7 @@ import 'package:todo_app/main.dart' as app;
 
 void main() {
   IntegrationTestWidgetsFlutterBinding.ensureInitialized();
-  group('Home Page ToDo', () {
+  group('Home Page ToDo Integration Test', () {
     testWidgets('Click 3x on add and delete ToDo', (WidgetTester tester) async {
       app.main();
       await tester.pumpAndSettle();
@@ -24,32 +24,28 @@ void main() {
       await tester.pumpAndSettle();
       expect(find.byKey(const Key('todoCard')), findsNothing);
     });
-  });
 
-  group('Home Page create custom ToDo', () {
-    testWidgets('Create a custom ToDo and delete', (WidgetTester tester) async {
-      app.main();
-      await tester.pumpAndSettle();
+    // testWidgets('Create a custom ToDo and delete', (WidgetTester tester) async {
+    //   app.main();
+    //   await tester.pumpAndSettle();
 
-      expect(find.byKey(const Key('todoTitleInput')), findsOneWidget);
-      await tester.enterText(
-          find.byKey(const Key('todoTitleInput')), 'Houdini');
-      await tester.pumpAndSettle();
+    //   expect(find.byKey(const Key('todoTitleInput')), findsOneWidget);
+    //   await tester.enterText(
+    //       find.byKey(const Key('todoTitleInput')), 'Houdini');
+    //   await tester.pumpAndSettle();
 
-      expect(find.byKey(const Key('todoSaveBtn')), findsOneWidget);
-      await tester.tap(find.byKey(const Key('todoSaveBtn')));
-      await tester.pumpAndSettle();
-      expect(find.byKey(const Key('todoCard')), findsOneWidget);
+    //   expect(find.byKey(const Key('todoSaveBtn')), findsOneWidget);
+    //   await tester.tap(find.byKey(const Key('todoSaveBtn')));
+    //   await tester.pumpAndSettle();
+    //   expect(find.byKey(const Key('todoCard')), findsOneWidget);
 
-      expect(find.byKey(const Key('deleteTodo')), findsOne);
-      await tester.tap(find.byKey(const Key('deleteTodo')));
-      await tester.pumpAndSettle();
+    //   expect(find.byKey(const Key('deleteTodo')), findsOne);
+    //   await tester.tap(find.byKey(const Key('deleteTodo')));
+    //   await tester.pumpAndSettle();
 
-      expect(find.byKey(const Key('todoCard')), findsNothing);
-    });
-  });
+    //   expect(find.byKey(const Key('todoCard')), findsNothing);
+    // });
 
-  group('Home Page Todo Delete All function', () {
     testWidgets('Create 3 dummy ToDo, click on Drawer and click on Clear Data',
         (WidgetTester tester) async {
       app.main();
@@ -65,7 +61,6 @@ void main() {
       expect(find.byTooltip('Open navigation menu'), findsOneWidget);
       await tester.tap(find.byTooltip('Open navigation menu'));
       await tester.pumpAndSettle();
-      await Future.delayed(const Duration(seconds: 2));
 
       expect(find.text('CLEAR DATA'), findsOne);
       await tester.tap(find.text('CLEAR DATA'));

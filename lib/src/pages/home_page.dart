@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:todo_app/src/modules/boxes/todo_box.dart';
 import 'package:todo_app/src/interactor/atoms/todo_atom.dart';
 import 'package:todo_app/src/widgets/drawer_widget.dart';
 import 'package:todo_app/src/widgets/list_todo_widget.dart';
@@ -22,7 +21,9 @@ class HomePage extends StatelessWidget {
         title: const Text("To Do"),
         backgroundColor: Theme.of(context).colorScheme.primary,
       ),
-      drawer: const DrawerWidget(key: Key('drawerBtn'),),
+      drawer: const DrawerWidget(
+        key: Key('drawerBtn'),
+      ),
       body: Column(
         children: [
           const Expanded(child: ListTodoWidget()),
@@ -33,12 +34,10 @@ class HomePage extends StatelessWidget {
               todoAtom.saveTodoAction;
             },
           ),
-          SaveButtonWidget(onPressed: () {
-            todoAtom.todoTitle.setValue(controller.text);
-            todoAtom.saveTodoAction();
-            todoAtom.todoListAll.setValue(todoBox.values.toList());
-            controller.clear();
-          }),
+          SaveButtonWidget(
+            key: const Key('todoSaveBtn'),
+            controller: controller,
+          ),
         ],
       ),
     );

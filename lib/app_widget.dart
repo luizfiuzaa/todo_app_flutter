@@ -9,7 +9,7 @@ class AppWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp.router(
       debugShowCheckedModeBanner: false,
-      title: 'Todo App',
+      title: 'ToDo App',
       theme: lightTheme,
       routeInformationParser: Modular.routeInformationParser,
       routerDelegate: Modular.routerDelegate,
