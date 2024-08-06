@@ -10,8 +10,5 @@ class TodoAtom /*implements Disposable*/ {
   final todoTitle = Atom<String>('');
   final todoListAll = Atom<List<TodoItem>>([]);
 
-  void dispose(){}
-
+  void dispose() {}
 }
-
-
